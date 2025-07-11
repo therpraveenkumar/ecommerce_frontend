@@ -31,11 +31,6 @@ ul li a{
     font-size: 0.8rem;
     font-weight: 500;
 }
-.card{
-    height: 400px;
-    border-radius: 8px;
-    margin: 0.5%;
-}
 
 .hero-section{
     width: 100%;
@@ -150,22 +145,58 @@ ul li a{
     background-color: #2077fb;
 }
 
+.products-container{
+    height: 100%;
+    width: 100%;
+    padding: 2%;
+}
+
 .result-container{
     position: relative;
     height: 100%;
     display: flex;
     flex-direction: row;
-    padding: 1%;
     flex-wrap: wrap;
-    justify-content: flex-end;
+    justify-content: space-evenly;
     float: right;
+    right: 0;
 }
 
 .filter-container {
     position: relative;
-    height: 100vh;
-    padding: 1%;
+    padding: 2%;
     float: left;
-    background-color: #c25656;
-    border-right: 1px solid #ddd;
+}
+
+@keyframes revealSearchBar {
+    from {
+        width: 0;
+        transform: scaleX(0);
+        transform-origin: right;
+    }
+    to {
+        width: 50vh;
+        transform: scaleX(1);
+        transform-origin: right;
+    }
+}
+
+.search-bar{
+    display: none;
+    width: 0;
+    transform-origin: right;
+    transition: width 1s ease-in-out;
+}
+
+.search-bar.active {
+    display: inline-block;
+    animation: revealSearchBar 0.5s ease-in-out forwards;
+}
+ul:has(.search-bar.active) li:not(:has(.search-bar.active, .search-icon)) {
+    
+    display: none;
+}
+
+.search-icon.active, .search-bar.active{
+    display: inline;
 }

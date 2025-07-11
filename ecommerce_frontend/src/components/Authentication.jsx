@@ -51,7 +51,10 @@ export default function Authentication() {
     if (!form.pincode.trim()) tempErrors.pincode = 'Pincode is required';
     else if (!pincodeRegex.test(form.pincode)) tempErrors.pincode = 'Pincode must be 5 or 6 digits';
 
-    if (!form.city.trim()) tempErrors.city = 'City is required';
+    if (!form.question.trim()) tempErrors.question = 'Question is required';
+    else if (!alphaRegex.test(form.city)) tempErrors.city = 'City must contain only letters and spaces';
+
+    if (!form.question.trim()) tempErrors.question = 'Question is required';
     else if (!alphaRegex.test(form.city)) tempErrors.city = 'City must contain only letters and spaces';
 
     setErrors(tempErrors);

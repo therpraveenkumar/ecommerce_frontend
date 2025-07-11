@@ -1,6 +1,19 @@
 import React, { useState } from 'react';
 import '../assets/style.css';
-function NavBar() {
+function NavBar({params}) {
+  const { cart, profile } = params || {};
+
+  function activateSearchBar(event) {
+    event.preventDefault();
+    const searchBar = document.querySelector('.search-bar');
+    const searchIcon = document.querySelector('.search-icon');
+    if (searchBar && searchIcon) {
+      searchBar.classList.toggle('active');
+      searchIcon.classList.toggle('active');
+      searchBar.focus();
+    }
+    
+  }
 
   return (
           <nav className="navbar">
@@ -16,7 +29,10 @@ function NavBar() {
                     <li><a href="#blog">Bag</a></li>
                     <li><a href="#faq">Shoes</a></li>
                     <li><a href="/authentication">Sign-in</a></li>
-                    <li><a href="/show-products">Search</a></li>
+                    <input type="text" className="search-bar" placeholder="Search products..."  />
+                    <li><a href="/show-products" className="search-icon" onClick={activateSearchBar}><i className="fas fa-search"></i></a></li>
+                    {cart ? <li><a href="#cart"><i className="fas fa-shopping-cart"></i></a></li> : null}
+                    {profile ? <li><a href="#profile"><i className="fa-solid fa-user"></i></a></li> : null}
               </ul>
           </nav>
   );

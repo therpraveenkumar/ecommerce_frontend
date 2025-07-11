@@ -26,16 +26,17 @@ export default function ShowProducts() {
 
     return (
             <div className='ShowProducts'>
-                <NavBar />
-                <div className="filter-container col-1">
-
+                <NavBar params={{ cart: true, profile: true }} />
+                <div className="products-container">
+                    <div className="filter-container col-2">
+                       
+                    </div>
+                    <div className='result-container col-10'>
+                        {product.map((product, index) => (
+                        <ProductCard key={index} product={product} />
+                        ))}
+                    </div>
                 </div>
-                <div className='result-container col-11'>
-                    {product.map((product, index) => (
-                <ProductCard key={index} product={product} />
-                ))}
-                </div>
-                
             </div>
     );
 }
